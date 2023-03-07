@@ -24,21 +24,20 @@ app.post("/", async (req, res) => {
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt:req.body.input,
-      temperature: 0,//for the accuracy of the answer to the question, less number == more accuracy
+      prompt: req.body.input,
+      temperature: 0, //for the accuracy of the answer to the question, less number == more accuracy
       max_tokens: 4000, //for max length of the reply
       top_p: 1,
       frequency_penalty: 0.5,
       presence_penalty: 0,
     });
-    console.log("PASSED: ",req.body.input);
+    console.log("PASSED: ", req.body.input);
 
     res.status(200).send({
-        bot : response.data.choices[0].text
-    })
-
+      bot: response.data.choices[0].text,
+    });
   } catch (err) {
-    console.log("FAIL: ",req.body.input);
+    console.log("FAIL: ", req.body.input);
     console.error(err);
     res.status(500).send(err);
   }

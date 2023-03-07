@@ -1,4 +1,4 @@
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import send from "./assets/send.svg";
@@ -9,9 +9,10 @@ function App() {
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
 
-  useEffect(()=>{
-    document.querySelector(".layout").scrollTop=document.querySelector(".layout").scrollHeight;
-  },[posts])
+  useEffect(() => {
+    document.querySelector(".layout").scrollTop =
+      document.querySelector(".layout").scrollHeight;
+  }, [posts]);
 
   const fetchBotResponse = async () => {
     const { data } = await axios.post(
